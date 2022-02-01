@@ -5,22 +5,45 @@ export const incrementValueAC = () => {
     } as const
 }
 
-export const decrementValueAC = () => {
+export const resetValueAC = () => {
     return {type: 'RESET'} as const
 }
 
-type incrementValueACType = ReturnType<typeof incrementValueAC>
-type decrementValueACType = ReturnType<typeof decrementValueAC>
-
-type commonType = incrementValueACType | decrementValueACType
-
-const initialState = {
-    value: 0,
-    startValue: 0,
-    maxValue: 0
+export const setValueAC = () => {
+    return {
+        type: 'SET_VALUE'
+    } as const
 }
 
-type initialStateType = typeof initialState
+export const setStartValueAC = (value: number)=> {
+    return {
+        type: 'SET_START_VALUE',
+        value
+    } as const
+}
+
+export const setMaxValueAC = (value: number)=> {
+    return {
+        type: 'SET_MAX_VALUE',
+        value
+    } as const
+}
+
+type incrementValueACType = ReturnType<typeof incrementValueAC>
+type resetValueACType = ReturnType<typeof resetValueAC>
+type setValueACType = ReturnType<typeof setValueAC>
+type setStartValueACType = ReturnType<typeof setStartValueAC>
+type setMaxValueACType = ReturnType<typeof setMaxValueAC>
+
+type commonType = incrementValueACType | resetValueACType | setValueACType |setStartValueACType | setMaxValueACType
+
+const initialState = {
+    startValue: 0,
+    maxValue: 0,
+    value: 0
+}
+
+export type initialStateType = typeof initialState
 
 const counterReducer = (state: initialStateType = initialState, action: commonType): initialStateType => {
     switch (action.type) {
@@ -32,7 +55,22 @@ const counterReducer = (state: initialStateType = initialState, action: commonTy
         case 'RESET':
             return {
                 ...state,
-                value: 0
+                value: state.startValue
+            }
+        case 'SET_VALUE':
+            return {
+                ...state,
+                value: state.startValue
+            }
+        case "SET_START_VALUE":
+            return {
+                ...state,
+                startValue: action.value
+            }
+        case "SET_MAX_VALUE":
+            return {
+                ...state,
+                maxValue: action.value
             }
         default:
             return state

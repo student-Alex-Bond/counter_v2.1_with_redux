@@ -1,4 +1,4 @@
-import counterReducer, {decrementValueAC, incrementValueAC} from "./counterReducer";
+import counterReducer, {resetValueAC, incrementValueAC} from "./counterReducer";
 
 test('increment', ()=> {
     const startState = {
@@ -19,7 +19,7 @@ test('reset', ()=> {
         maxValue: 0
     }
 
-    const endState = counterReducer(startState, decrementValueAC())
+    const endState = counterReducer(startState, resetValueAC())
 
     expect(endState.value).toBe(0)
 })
