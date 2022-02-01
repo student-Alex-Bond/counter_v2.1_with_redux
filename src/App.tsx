@@ -55,7 +55,7 @@ function App() {
 
     useEffect(() => {
         toggleError()
-    }, )
+    }, [counter] )
 
     return (
         <div className="App">

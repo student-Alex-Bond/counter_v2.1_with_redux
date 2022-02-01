@@ -35,7 +35,7 @@ type setValueACType = ReturnType<typeof setValueAC>
 type setStartValueACType = ReturnType<typeof setStartValueAC>
 type setMaxValueACType = ReturnType<typeof setMaxValueAC>
 
-type commonType = incrementValueACType | resetValueACType | setValueACType |setStartValueACType | setMaxValueACType
+type ActionsType = incrementValueACType | resetValueACType | setValueACType |setStartValueACType | setMaxValueACType
 
 const initialState = {
     startValue: 0,
@@ -45,7 +45,7 @@ const initialState = {
 
 export type initialStateType = typeof initialState
 
-const counterReducer = (state: initialStateType = initialState, action: commonType): initialStateType => {
+const counterReducer = (state: initialStateType = initialState, action: ActionsType): initialStateType => {
     switch (action.type) {
         case 'INCREMENT':
             return {

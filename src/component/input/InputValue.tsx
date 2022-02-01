@@ -1,15 +1,14 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, FC} from 'react';
 import styles from './inputValue.module.css'
 
 type inputType = {
     inputStyle:{ style: {backgroundColor?: string, opacity?: string}, disabled?: boolean}
     error: boolean
-    children: string
     value: number
     onChangeValueCallback: (value: number) => void
 }
 
-const InputValue = (props: inputType) => {
+const InputValue: FC<inputType> = (props) => {
     const onChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
         props.onChangeValueCallback(event.currentTarget.valueAsNumber)
     }
@@ -23,6 +22,7 @@ const InputValue = (props: inputType) => {
                    onChange={onChangeValue}
                    value={props.value}
             />
+
         </div>
     );
 };

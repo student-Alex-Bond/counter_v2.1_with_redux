@@ -32,10 +32,10 @@ const SetValue = (props: setValueType) => {
             <div className={styles.inputs}>
                 <InputValue inputStyle={inputStyle}
                             error={props.error}
-                            children={'MAX VALUE: '}
+
                             value={props.maxValue}
                             onChangeValueCallback={props.onChangeMaxValueCallback}
-                />
+                >Max value: </InputValue>
                 <InputValue inputStyle={inputStyle}
                             error={props.error}
                             children={'START VALUE: '}
@@ -43,9 +43,9 @@ const SetValue = (props: setValueType) => {
                             onChangeValueCallback={props.onChangeStartValueCallback}/>
             </div>
             <div className={styles.buttons}>
-                <Button children={'Set'} {...buttonStyle}
+                <Button  {...buttonStyle}
                         onClick={props.setValue}
-                />
+                >Set</Button>
             </div>
         </div>
     );
